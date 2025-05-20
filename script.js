@@ -848,7 +848,7 @@ function initTetris() {
 }
 
 
-  document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("confetti-sound");
     const loadingScreen = document.getElementById("loading-screen");
     const mainScreen = document.getElementById("main-screen");
@@ -863,22 +863,16 @@ function initTetris() {
       if (progress >= 100) {
         clearInterval(loadingInterval);
 
-    
-
-        loadingScreen.style.cursor = "pointer";
-
+        // Tambahkan event klik hanya setelah loading selesai
         loadingScreen.addEventListener("click", async () => {
           try {
-            await audio.play();  // wajib await agar play() dijalankan saat event klik
-            loadingScreen.classList.add("hidden");
-            mainScreen.classList.remove("hidden");
-          } catch (error) {
-            console.error("Gagal memutar audio:", error);
-            alert("Klik tombol play di halaman utama untuk memulai musik.");
-            loadingScreen.classList.add("hidden");
-            mainScreen.classList.remove("hidden");
+            await audio.play();
+          } catch (err) {
+            console.warn("Audio gagal diputar otomatis:", err);
           }
+          loadingScreen.classList.add("hidden");
+          mainScreen.classList.remove("hidden");
         }, { once: true });
       }
-    }, 20);
+    }, 30);
   });
