@@ -886,5 +886,5 @@ function initTetris() {
           }
         }, { once: true });
       }
-    }, 30);
+    }, 20);
   });
