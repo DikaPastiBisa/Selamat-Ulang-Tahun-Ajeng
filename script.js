@@ -848,7 +848,7 @@ function initTetris() {
 }
 
 
- document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("confetti-sound");
     const loadingScreen = document.getElementById("loading-screen");
     const mainScreen = document.getElementById("main-screen");
@@ -856,31 +856,35 @@ function initTetris() {
 
     let progress = 0;
     const loadingInterval = setInterval(() => {
-      progress += 1;
+      progress++;
       progressElem.textContent = `${progress}%`;
       progressElem.style.width = `${progress}%`;
 
       if (progress >= 100) {
         clearInterval(loadingInterval);
 
-        // Tampilkan pesan "Klik untuk lanjut" atau semacamnya (opsional)
-        const clickToContinue = document.createElement("p");
-        clickToContinue.textContent = "Klik di mana saja untuk melanjutkan";
-        clickToContinue.style.marginTop = "20px";
-        clickToContinue.style.fontSize = "14px";
-        clickToContinue.style.color = "#fff";
-        clickToContinue.style.animation = "blink 1s infinite";
-        loadingScreen.appendChild(clickToContinue);
+        // Tambah pesan klik untuk lanjut (opsional)
+        let clickMsg = document.createElement("p");
+        clickMsg.textContent = "Klik di sini untuk melanjutkan";
+        clickMsg.style.color = "#fff";
+        clickMsg.style.marginTop = "20px";
+        clickMsg.style.cursor = "pointer";
+        loadingScreen.appendChild(clickMsg);
 
-        // Baru izinkan klik setelah loading selesai
-        loadingScreen.addEventListener("click", () => {
-          loadingScreen.classList.add("hidden");
-          mainScreen.classList.remove("hidden");
+        loadingScreen.style.cursor = "pointer";
 
-          audio.play().catch((err) => {
-            console.warn("Gagal memutar audio:", err);
-          });
-        }, { once: true }); // hanya bisa klik satu kali
+        loadingScreen.addEventListener("click", async () => {
+          try {
+            await audio.play();  // wajib await agar play() dijalankan saat event klik
+            loadingScreen.classList.add("hidden");
+            mainScreen.classList.remove("hidden");
+          } catch (error) {
+            console.error("Gagal memutar audio:", error);
+            alert("Klik tombol play di halaman utama untuk memulai musik.");
+            loadingScreen.classList.add("hidden");
+            mainScreen.classList.remove("hidden");
+          }
+        }, { once: true });
       }
-    }, 40); // loading 3 detik
+    }, 30);
   });
