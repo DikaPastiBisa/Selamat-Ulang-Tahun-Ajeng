@@ -1,0 +1,762 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', Courier, monospace;
+  background: black;
+  color: #ff009d;
+  text-align: center;
+}
+
+.screen {
+  padding: 40px 20px;
+}
+
+.hidden {
+  display: none;
+}
+
+/* Progress Bar */
+.progress-bar {
+  background-color: #333;
+  width: 70%;
+  margin: 20px auto;
+  height: 25px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(to right, rgb(205, 50, 171), rgb(205, 156, 50));
+  text-align: center;
+  line-height: 25px;
+  color: black;
+  font-weight: bold;
+}
+
+.smile {
+  color: rgb(255, 0, 153);
+}
+
+/* GameBoy Main Screen - Updated Style */
+.gameboy {
+  background: #e8e8e8;
+  width: 280px;
+  margin: auto;
+  padding: 20px;
+  border-radius: 15px;
+  border: 8px solid #d0d0d0;
+  position: relative;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.screen-text {
+  background: #8bac0f;
+  color: #0f380f;
+  padding: 15px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  border: 5px solid #5c6b0a;
+  font-family: 'Press Start 2P', cursive;
+  text-align: center;
+}
+
+.screen-text h2 {
+  font-size: 20px;
+  margin: 10px 0;
+  line-height: 1.3;
+}
+
+.power-text {
+  font-size: 10px;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.press-start {
+  font-size: 12px;
+  margin-top: 15px;
+  color: #0f380f;
+}
+
+.menu-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.menu-buttons button {
+  width: 100%;
+  padding: 8px;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 12px;
+  background: #d0d0d0;
+  border: 3px solid #a0a0a0;
+  color: #333;
+  cursor: pointer;
+}
+
+.menu-buttons button:hover {
+  background: #b8b8b8;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.dpad {
+  width: 80px;
+  height: 80px;
+  background: #333;
+  border-radius: 50%;
+  position: relative;
+}
+
+.dpad:before {
+  content: "";
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: #555;
+  border-radius: 50%;
+  top: 15px;
+  left: 15px;
+}
+
+.ab-buttons {
+  display: flex;
+  gap: 15px;
+}
+
+.ab-buttons .btn {
+  width: 40px;
+  height: 40px;
+  background: #ff3333;
+  border-radius: 50%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 14px;
+  border: 3px solid #cc0000;
+}
+
+/* Menu Pages */
+#message, #gallery, #music, #tetris {
+  background-color: #001f3f;
+  color: #ff009d;
+  padding: 30px;
+}
+
+.nav-buttons button {
+  margin: 10px;
+  padding: 10px;
+  font-weight: bold;
+  font-family: inherit;
+}
+
+/* Gallery Page Styles */
+.photobox-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  background-color: #1a3a5f;
+  border-radius: 15px;
+  border: 2px solid #2c5282;
+  overflow: hidden;
+}
+
+.photobox-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #4a5568;
+  padding: 10px;
+}
+
+.photobox-title {
+  color: #ffd700;
+  margin: 0;
+  font-size: 18px;
+}
+
+.red-dot, .green-dot {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.red-dot {
+  background-color: #ff0000;
+}
+
+.green-dot {
+  background-color: #00ff00;
+}
+
+.photobox-divider {
+  height: 3px;
+  background-color: #000;
+  width: 100%;
+}
+
+.photobox-screen {
+  background-color: #0a192f;
+  min-height: 300px;
+  padding: 20px;
+  position: relative;
+}
+
+.photobox-text {
+  color: #d1d5db;
+  margin-top: 100px;
+}
+
+.photobox-caption {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  color: white;
+  font-size: 14px;
+}
+
+.photobox-controls {
+  display: flex;
+  justify-content: center;
+  background-color: #4a5568;
+  padding: 10px;
+}
+
+.photobox-button {
+  width: 40px;
+  height: 15px;
+  background-color: #718096;
+  border-radius: 10px;
+  margin: 0 10px;
+}
+
+.photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.photo {
+  width: 180px;
+  height: 180px;
+  background-color: white;
+  border: 5px solid white;
+  position: relative;
+}
+
+.photo-number {
+  position: absolute;
+  bottom: 5px;
+  left: 5px;
+  color: #ff009d;
+  font-weight: bold;
+}
+
+.photo-date {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background-color: #ff009d;
+  color: black;
+  padding: 3px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.photo-progress {
+  color: #ffd700;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.orange-btn {
+  background-color: #FF5722;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px auto;
+  display: block;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.green-btn {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 5px;
+  display: inline-block;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.red-btn {
+  background-color: #f44336;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: bold;
+  margin: 10px 5px;
+  display: inline-block;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Music Player Styles */
+.music-player {
+  background-color: #0a192f;
+  border-radius: 10px;
+  padding: 15px;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+}
+
+.album-art {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 10px;
+  background-color: #233554;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.album-art img {
+  width: 100%;
+  max-width: 500px;
+  height: 550px;
+  margin: 0 auto 30px;
+  border-radius: 15px;
+  border: 2px solid #2c5282;
+  object-fit: cover;
+  display: block;
+}
+
+.song-info {
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.song-title {
+  color: #00ff00;
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.song-artist {
+  color: #4fd1c5;
+  margin: 5px 0;
+}
+
+.player-progress {
+  margin: 15px 0;
+}
+
+.time-display {
+  display: flex;
+  justify-content: space-between;
+  color: #a0aec0;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.player-progress .progress-bar {
+  background-color: #2d3748;
+  height: 6px;
+  border-radius: 3px;
+  overflow: hidden;
+  width: 100%;
+  margin: 0;
+}
+
+.player-progress .progress {
+  background: linear-gradient(to right, #00ff00, #00ffff);
+  height: 100%;
+  width: 0%;
+}
+
+.player-controls {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px 0;
+}
+
+.circle-btn {
+  width: 40px;
+  height: 40px;
+  background-color: #2d3748;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.circle-btn:hover {
+  background-color: #3d4a68;
+}
+
+.media-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+
+
+.playlist-container {
+  background-color: #233554;
+  border-radius: 5px;
+  padding: 10px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.playlist-title {
+  color: #ffd700;
+  margin-top: 0;
+  text-align: left;
+  font-size: 16px;
+}
+
+.playlist {
+  max-height: 120px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.playlist-item {
+  padding: 5px;
+  color: #cbd5e0;
+  border-bottom: 1px solid #2d3748;
+  cursor: pointer;
+}
+
+.playlist-item:hover {
+  background-color: #2d4a7a;
+}
+
+.playlist-item.active {
+  color: #00ff00;
+  font-weight: bold;
+}
+
+.player-caption {
+  position: absolute;
+  bottom: -20px;
+  right: 0;
+  color: white;
+  font-size: 14px;
+}
+
+/* Tetris Game Styles */
+.tetris-container {
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto 20px;
+  background-color: #0a192f;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.tetris-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #ffd700;
+}
+
+.score-info {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.tetris-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  grid-template-rows: repeat(20, 1fr);
+  width: 100%;
+  background-color: #1a365d;
+  aspect-ratio: 1/2;
+  border: 2px solid #cbd5e0;
+}
+
+.tetris-cell {
+  border: 1px solid #2d3748;
+  background-color: transparent;
+}
+
+.tetris-controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.blue-btn {
+  background-color: #2196F3;
+  border: none;
+  color: white;
+  padding: 8px 15px;
+  text-align: center;
+  font-weight: bold;
+  margin: 5px;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Responsive design */
+@media (max-width: 600px) {
+  .photobox-container, .music-player, .tetris-container {
+    width: 95%;
+  }
+  
+  .photo {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+#gallery .photobox-screen {
+  max-height: 80vh;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.photo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+
+.photo img {
+  display: block;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* Audio player styling */
+.audio-player {
+  margin: 20px auto;
+  width: 100%;
+  max-width: 500px;
+}
+
+.audio-player audio {
+  width: 100%;
+  outline: none;
+  display: none; /* Sembunyikan elemen audio default */
+}
+
+/* Loading animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.smile {
+  animation: pulse 1.5s infinite;
+}
+
+/* Animasi progress bar */
+@keyframes progress-animation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.progress {
+  background-size: 200% 200%;
+  animation: progress-animation 2s ease infinite;
+}
+
+/* Custom scrollbar untuk playlist */
+.playlist::-webkit-scrollbar {
+  width: 6px;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background: #1a365d;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background: #4a5568;
+  border-radius: 3px;
+}
+
+.playlist::-webkit-scrollbar-thumb:hover {
+  background: #718096;
+}
+
+/* Efek aktif untuk tombol */
+.circle-btn:active, .media-btn:active, .blue-btn:active, .red-btn:active, .green-btn:active {
+  transform: scale(0.95);
+}
+
+.message-container {
+  background-color: #0a192f;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 500px;
+  border-left: 4px solid #ff009d;
+  text-align: left;
+  line-height: 1.6;
+}
+
+
+/*tetris
+css
+/* Tetris Game - Custom Style */
+#tetris {
+  background-color: #3f51b5 !important; /* Warna biru seperti pada foto */
+  padding: 20px;
+}
+
+.tetris-container {
+  background-color: #000;
+  border: 10px solid #e0d08d; /* Border emas */
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 350px;
+}
+
+.retro-title {
+  color: #4eff4e; /* Warna hijau cerah */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  font-size: 28px;
+  margin-top: 0;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.score-info {
+  color: #ffeb3b; /* Warna kuning */
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 16px;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.level-info {
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.tetris-grid {
+  border: 4px solid #2d3748;
+  background-color: #1a2b3d; /* Warna latar belakang grid lebih gelap */
+  margin: 0 auto 15px;
+  max-width: 220px;
+}
+
+.tetris-cell {
+  border: 1px solid #445566;
+}
+
+.tetris-next-piece {
+  margin: 15px auto;
+}
+
+.tetris-next-piece h3 {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.next-piece-grid {
+  margin: 0 auto;
+  background-color: #1a2b3d;
+  border: 2px solid #445566;
+}
+
+/* Tombol dengan warna seperti di foto */
+.blue-btn {
+  background-color: #03a9f4;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 15px;
+  width: 30%;
+  text-align: center;
+}
+
+.green-btn {
+  background-color: #4caf50;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.red-btn {
+  background-color: #f44336;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  width: 100%;
+}
+
+.tetris-controls {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.tetris-buttons {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+
+/* Confetti styling */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  pointer-events: none;
+}
+
+.dots, .loading-dots {
+  display: none; /* atau hapus seluruh rule */
+}

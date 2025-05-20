@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="id">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+   <!-- Tambahkan sebelum </body> -->
+<audio id="confetti-sound" src="musik/happy-birthday_[cut_193sec].mp3" preload="auto"></audio>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+  <div class="screen" id="loading-screen">
+  <h1>Tunggu Sebentar Ya</h1>
+  <p> Semoga Kamu Suka </p>
+  <div class="progress-bar">
+    <div id="progress" class="progress">0%</div>
+  </div>
+  <p class="smile">SMILE!</p>
+</div>
+
+
+<!-- 2. Tampilan Utama GameBoy -->
+<div class="screen hidden" id="main-screen">
+  <div class="gameboy">
+    <div class="screen-text">
+      <div class="power-text">POWER</div>
+      <h2>Happy<br>Birthday!</h2>
+      <p class="press-start">Ajeng Dwi Retnowati</p>
+    </div>
+    <div class="menu-buttons">
+      <button onclick="showPage('message')">MESSAGE</button>
+      <button onclick="showPage('gallery')">GALLERY</button>
+      <button onclick="showPage('music')">MUSIC</button>
+      <button onclick="showPage('tetris')">TETRIS</button>
+    </div>
+    <div class="controls">
+      <div class="dpad"></div>
+      <div class="ab-buttons">
+        <div class="btn">A</div>
+        <div class="btn">B</div>
+      </div>
+    </div>
+  </div>
+</div>
+  <!-- 3. Halaman Masing-Masing Menu -->
+  <div class="screen hidden" id="message">
+    <h2 class="retro-title">Pesan</h2>
+    <div class="message-container">
+      <p>Halo Ajeng,</p>
+      <p>Selamat Ulang Tahun Yaaa!</p>
+      <p>Semoga harimu dipenuhi dengan kebahagiaan, tawa, dan semua hal yang membuatmu bahagia!</p>
+      <p>Semoga tahun ini segala yang kamu harapkan akan tercapai.</p>
+      <p>Dan semoga di permudah saat mengerjaan sempro bab 1 - 3 nya</p>
+      <p>Terima kasih, ya, udah mau kenal sama aku.
+Senang banget bisa kenal sama kamu jeng. </p>
+    </div>
+    <div class="nav-buttons">
+      <button class="red-btn" onclick="backToMain()">KEMBALI</button>
+    </div>
+  </div>
+
+  <div class="screen hidden" id="gallery">
+    <h2 class="retro-title">Galeri</h2>
+    <div class="photobox-container">
+      <div class="photobox-header">
+        <h3 class="photobox-title">Galeri Ajeng</h3>
+        
+      </div>
+      <div class="photobox-divider"></div>
+      
+      <div class="photobox-screen" id="gallery-photos">
+        <div class="photo-container">
+          <!-- Tambahkan gambar sesuai kebutuhan -->
+          <div class="photo">
+            <img src="img/IMG_2923.PNG" alt="#1" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-number">#1</div>
+            <div class="photo-date"></div>
+          </div>
+          <div class="photo">
+            <img src="img/IMG_2924.PNG" alt="#2" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-number">#2</div>
+            <div class="photo-date"></div>
+          </div>
+          <div class="photo">
+            <img src="img/IMG_2922.PNG" alt="#3" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-number">#3</div>
+            <div class="photo-date"></div>
+          </div>
+          <div class="photo">
+            <img src="img/IMG_2920.PNG" alt="#4" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-number">#4</div>
+            <div class="photo-date"></div>
+          </div>
+          <div class="photo">
+            <img src="img/IMG_2921.PNG" alt="#5" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-number">#5</div>
+            <div class="photo-date"></div>
+          </div>
+          <div class="photo">
+            <img src="img/ajxng.dt__3196696783761459281's2025-5-13-23.21.978 story.jpg" alt="#6" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-number">#6</div>
+            <div class="photo-date"></div>
+          </div>
+          <div class="photo">
+            <img src="img/aj.jpg" alt="#6" style="width:100%; height:100%; object-fit:cover;">
+            <div class="photo-number">#6</div>
+            <div class="photo-date"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="red-btn" onclick="backToMain()">KEMBALI</button>
+    </div>
+  </div>
+
+
+  <div class="screen hidden" id="music">
+    <h2 class="retro-title">Pemutar Musik</h2>
+    <div class="music-player">
+      <div class="album-art">
+        <img src="img/WhatsApp Image 2025-05-14 at 11.10.19_b4684d01.jpg" alt="Cover Album" />
+      </div>
+      <div class="audio-player">
+       <audio id="main-audio">
+      <source src="musik/Lesung Pipi - Raina Laode ( Senja R.mp3" type="audio/mpeg" />
+    </audio>
+      <source src="musik/MALIQ & D'Essentials - Pilihanku (Official Music Video).mp3" />
+    </audio>
+      <source src="musik/Sheila On 7 - Sahabat Sejati (Official Audio).mp3" />
+    </audio>
+      <source src="musik/TULUS - Teman Hidup (Official Music Video).mp3" />
+    </audio>
+    </audio>
+      <source src="musik/Fourtwnty - Mangu ft. Charita Utami ( Official Lyric Video ).mp3" />
+    </audio>
+      </div>
+
+      <div class="player-progress">
+        <div class="time-display">
+          <span class="current-time">0:00</span>
+          <span class="duration">0:00</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress" style="width: 0%"></div>
+        </div>
+      </div>
+      <div class="player-controls">
+        <div class="circle-btn prev-btn">⏮</div>
+        <div class="circle-btn play-btn">▶️</div>
+        <div class="circle-btn next-btn">⏭</div>
+      </div>
+   
+      <div class="playlist-container">
+        <h3 class="playlist-title">PLAYLIST:</h3>
+        <div class="playlist">
+          <div class="playlist-item active">1. Lesung Pipi - Raim Laode</div>
+          <div class="playlist-item">2. Pilihanku - MALIQ & D'Essentials</div>
+          <div class="playlist-item">3. Sahabat Sejati - Sheila On 7 </div>
+          <div class="playlist-item">4. Teman Hidup - TULUS </div>
+          <div class="playlist-item">5. Mangu - Fourtwnty</div>
+        </div>
+      </div>
+    </div>
+    <div class="nav-buttons">
+      <button class="red-btn" onclick="backToMain()">KEMBALI</button>
+    </div>
+  </div>
+
+<!-- 4. tetris -->
+<div class="screen hidden" id="tetris">
+  <h2 class="retro-title">Tetris</h2>
+  <div class="tetris-container">
+    <div class="score-info">
+      <span>Skor: <span id="tetris-score">0</span></span>
+      <span class="level-info">Level: <span id="tetris-level">1</span></span>
+    </div>
+    <div class="score-info">
+      <span>Baris: <span id="tetris-lines">0</span></span>
+    </div>
+    
+    <div class="tetris-grid" id="tetris-grid">
+      <!-- Grid akan diisi oleh JavaScript -->
+    </div>
+    
+    <!-- Tambahkan bagian ini untuk next piece -->
+    <div class="tetris-next-piece">
+      <h3>Piece Berikutnya:</h3>
+      <div class="next-piece-grid" id="next-piece-grid">
+        <!-- Akan diisi oleh JavaScript -->
+      </div>
+    </div>
+    
+    <div class="tetris-controls">
+      <button class="blue-btn" id="move-left">←</button>
+      <button class="blue-btn" id="rotate-btn">PUTAR</button>
+      <button class="blue-btn" id="move-right">→</button>
+    </div>
+    
+    <div class="tetris-buttons">
+      <button class="green-btn" id="start-tetris">MULAI GAME</button>
+      <button class="red-btn" onclick="backToMain()">KEMBALI</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  <!-- Pastikan menggunakan nama file yang benar -->
+  <script src="script.js"></script>
+</body>
+</html>
