@@ -5,8 +5,15 @@
   <title>Happy Birthday</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-
 </head>
+
+  <style>
+  /* Animasi teks "klik untuk lanjut" berkedip */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+  }
+</style>
 
 <body>
    <!-- Tambahkan sebelum </body> -->
@@ -21,7 +28,7 @@
   </div>
   <p class="smile">SMILE!</p>
 </div>
-
+ 
 
 <!-- 2. Tampilan Utama GameBoy -->
 <div class="screen hidden" id="main-screen">
