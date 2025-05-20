@@ -848,7 +848,7 @@ function initTetris() {
 }
 
 
-  document.addEventListener("DOMContentLoaded", function () {
+ document.addEventListener("DOMContentLoaded", function () {
     const audio = document.getElementById("confetti-sound");
     const loadingScreen = document.getElementById("loading-screen");
     const mainScreen = document.getElementById("main-screen");
@@ -863,16 +863,24 @@ function initTetris() {
       if (progress >= 100) {
         clearInterval(loadingInterval);
 
-        // Tambahkan listener klik hanya setelah loading selesai
+        // Tampilkan pesan "Klik untuk lanjut" atau semacamnya (opsional)
+        const clickToContinue = document.createElement("p");
+        clickToContinue.textContent = "Klik di mana saja untuk melanjutkan";
+        clickToContinue.style.marginTop = "20px";
+        clickToContinue.style.fontSize = "14px";
+        clickToContinue.style.color = "#fff";
+        clickToContinue.style.animation = "blink 1s infinite";
+        loadingScreen.appendChild(clickToContinue);
+
+        // Baru izinkan klik setelah loading selesai
         loadingScreen.addEventListener("click", () => {
           loadingScreen.classList.add("hidden");
           mainScreen.classList.remove("hidden");
+
           audio.play().catch((err) => {
-            console.warn("Autoplay gagal: ", err);
+            console.warn("Gagal memutar audio:", err);
           });
-        }, { once: true }); // hanya satu kali klik
+        }, { once: true }); // hanya bisa klik satu kali
       }
-    }, 30); // loading 3 detik
+    }, 40); // loading 3 detik
   });
-
-
