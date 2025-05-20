@@ -848,6 +848,7 @@ function initTetris() {
 }
 
 
+ 
 document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("confetti-sound");
     const loadingScreen = document.getElementById("loading-screen");
