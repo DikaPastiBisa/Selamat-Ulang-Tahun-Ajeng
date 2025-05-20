@@ -863,13 +863,7 @@ function initTetris() {
       if (progress >= 100) {
         clearInterval(loadingInterval);
 
-        // Tambah pesan klik untuk lanjut (opsional)
-        let clickMsg = document.createElement("p");
-        clickMsg.textContent = "Klik di sini untuk melanjutkan";
-        clickMsg.style.color = "#fff";
-        clickMsg.style.marginTop = "20px";
-        clickMsg.style.cursor = "pointer";
-        loadingScreen.appendChild(clickMsg);
+    
 
         loadingScreen.style.cursor = "pointer";
 
