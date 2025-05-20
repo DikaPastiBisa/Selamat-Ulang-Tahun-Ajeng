@@ -849,31 +849,45 @@ function initTetris() {
 
 
  
-document.addEventListener("DOMContentLoaded", () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("confetti-sound");
     const loadingScreen = document.getElementById("loading-screen");
     const mainScreen = document.getElementById("main-screen");
     const progressElem = document.getElementById("progress");
 
     let progress = 0;
-    const loadingInterval = setInterval(() => {
-      progress++;
-      progressElem.textContent = `${progress}%`;
+    let userClicked = false;
+    let loadingDone = false;
+
+    // Fungsi cek apakah bisa lanjut ke home
+    function tryGoToHome() {
+      if (loadingDone && userClicked) {
+        loadingScreen.classList.add("hidden");
+        mainScreen.classList.remove("hidden");
+
+        audio.play().catch((err) => {
+          console.warn("Gagal memutar audio:", err);
+        });
+      }
+    }
+
+    // Event klik di loading screen
+    loadingScreen.addEventListener("click", () => {
+      userClicked = true;
+      tryGoToHome();
+    });
+
+      const loadingInterval = setInterval(() => {
+      progress += 0.5;  // naik 0.5% per 15ms
+      if (progress > 100) progress = 100;
+      progressElem.textContent = `${Math.floor(progress)}%`;
       progressElem.style.width = `${progress}%`;
 
-      if (progress >= 10) {
+      if (progress >= 100) {
         clearInterval(loadingInterval);
-
-        // Tambahkan event klik hanya setelah loading selesai
-        loadingScreen.addEventListener("click", async () => {
-          try {
-            await audio.play();
-          } catch (err) {
-            console.warn("Audio gagal diputar otomatis:", err);
-          }
-          loadingScreen.classList.add("hidden");
-          mainScreen.classList.remove("hidden");
-        }, { once: true });
+        loadingDone = true;
+        tryGoToHome();
       }
-    }, );
+    }, 20);
+
   });
