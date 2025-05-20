@@ -847,28 +847,14 @@ function initTetris() {
   console.log("Tetris initialization complete");
 }
 
+
   document.addEventListener("DOMContentLoaded", function () {
     const audio = document.getElementById("confetti-sound");
-
-    // Coba mainkan saat user pertama kali klik layar atau menyentuh layar
-    const playAudioOnce = () => {
-      audio.play().catch((e) => {
-        console.warn("Autoplay gagal. Perlu interaksi user.");
-      });
-      document.removeEventListener("click", playAudioOnce);
-      document.removeEventListener("touchstart", playAudioOnce);
-    };
-
-    // Tambahkan event listener agar play audio saat interaksi pertama
-    document.addEventListener("click", playAudioOnce);
-    document.addEventListener("touchstart", playAudioOnce);
-
-    // Jika ingin play otomatis setelah loading screen selesai
     const loadingScreen = document.getElementById("loading-screen");
     const mainScreen = document.getElementById("main-screen");
-    let progress = 0;
     const progressElem = document.getElementById("progress");
 
+    let progress = 0;
     const loadingInterval = setInterval(() => {
       progress += 1;
       progressElem.textContent = `${progress}%`;
@@ -876,14 +862,17 @@ function initTetris() {
 
       if (progress >= 100) {
         clearInterval(loadingInterval);
-        loadingScreen.classList.add("hidden");
-        mainScreen.classList.remove("hidden");
 
-        // Coba play audio setelah loading selesai
-        audio.play().catch((err) => {
-          console.log("Autoplay ditolak, akan diputar setelah interaksi user.");
-        });
+        // Tambahkan listener klik hanya setelah loading selesai
+        loadingScreen.addEventListener("click", () => {
+          loadingScreen.classList.add("hidden");
+          mainScreen.classList.remove("hidden");
+          audio.play().catch((err) => {
+            console.warn("Autoplay gagal: ", err);
+          });
+        }, { once: true }); // hanya satu kali klik
       }
-    }, 30); // loading durasi total ~3 detik
+    }, 30); // loading 3 detik
   });
+
 
