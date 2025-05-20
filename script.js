@@ -860,7 +860,7 @@ document.addEventListener("DOMContentLoaded", () => {
       progressElem.textContent = `${progress}%`;
       progressElem.style.width = `${progress}%`;
 
-      if (progress >= 100) {
+      if (progress >= 10) {
         clearInterval(loadingInterval);
 
         // Tambahkan event klik hanya setelah loading selesai
@@ -874,5 +874,5 @@ document.addEventListener("DOMContentLoaded", () => {
           mainScreen.classList.remove("hidden");
         }, { once: true });
       }
-    }, 30);
+    }, );
   });
